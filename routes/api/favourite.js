@@ -1,6 +1,5 @@
 const express= require('express');
 const router=express.Router();
-const config=require('config');
 const Favourite=require('../../models/favourite');
 const auth=require('../../middleware/auth');
 
