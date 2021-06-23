@@ -14,6 +14,10 @@ const CommentSchema=new mongoose.Schema({
     },
     content:{
         type:String
+    },
+    discuss:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'post'
     }
 },{timestamp:true}) ;
 

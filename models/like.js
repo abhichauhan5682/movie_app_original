@@ -12,6 +12,10 @@ const likeSchema = mongoose.Schema({
    },
    movieId: {
        type: String,
+   },
+   postId:{
+       type:Schema.Types.ObjectId,
+       ref:"post"
    }
 
 }, { timestamps: true })

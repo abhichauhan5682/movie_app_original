@@ -24,8 +24,11 @@ router.post('/saveComment',auth,(req,res)=>{
 });
 
 router.post('/getComments',(req,res)=>{
-    console.log(req.body.movieId);
-    Comment.find({'postId':req.body.movieId})
+    //console.log(req.body);
+    var variable={};
+    if(req.body.movieId) variable={'postId':req.body.movieId}
+    else variable={'discuss':req.body.postId}
+    Comment.find(variable)
     .populate('writer')
     .exec((err,comments)=>{
         if(err) return res.status(400).send(err);
