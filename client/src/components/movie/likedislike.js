@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import axios from 'axios';
 import { Tooltip } from 'antd';
 import {LikeOutlined,DislikeOutlined,LikeFilled,DislikeFilled} from '@ant-design/icons';
-import { Fragment } from 'react';
+
 
 const LikeDislike = props => {
     const[Likes,setLikes]=useState(0);
@@ -49,49 +49,53 @@ const LikeDislike = props => {
     },[]);
     const handleClick=async ()=>{
        if(props.auth.isAuth===false||props.userId===null) alert("please login to like this post");
-       if(LikeAction===false){
-           const res=await axios.post('/api/like/uplike',variable);
-           if(res.data.success===true){
-               setLikes(Likes+1);
-               setLikeAction(true);
-               if(DislikeAction==true){
-                   setDislikeAction(false);
-                   setDislikes(Dislikes-1);
-               }
-           }else{
-               alert("failed to like");
-           }
-       }else{
-           const res=await axios.post('/api/like/unlike',variable)
-           if(res.data.success===true){
-               setLikes(Likes-1);
-               setLikeAction(false);
-           }else{
-               alert("Failed to decrease the like");
-           }
-       }
+       if(props.auth.isAuth){
+            if(LikeAction===false){
+                const res=await axios.post('/api/like/uplike',variable);
+                if(res.data.success===true){
+                    setLikes(Likes+1);
+                    setLikeAction(true);
+                    if(DislikeAction==true){
+                        setDislikeAction(false);
+                        setDislikes(Dislikes-1);
+                    }
+                }else{
+                    alert("failed to like");
+                }
+            }else{
+                const res=await axios.post('/api/like/unlike',variable)
+                if(res.data.success===true){
+                    setLikes(Likes-1);
+                    setLikeAction(false);
+                }else{
+                    alert("Failed to decrease the like");
+                }
+            }
+        }
     }
     const handleDislikeClik=async ()=>{
         if(props.auth.isAuth===false||props.userId===null) alert("please login to like this post");
-        if(DislikeAction===false){
-            const res=await axios.post('/api/like/updislike',variable);
-            if(res.data.success===true){
-                setDislikes(Dislikes+1);
-                setDislikeAction(true);
-                if(LikeAction===true){
-                    setLikes(Likes-1);
-                    setLikeAction(false);
+        if(props.auth.isAuth){
+            if(DislikeAction===false){
+                const res=await axios.post('/api/like/updislike',variable);
+                if(res.data.success===true){
+                    setDislikes(Dislikes+1);
+                    setDislikeAction(true);
+                    if(LikeAction===true){
+                        setLikes(Likes-1);
+                        setLikeAction(false);
+                    }
+                }else{
+                    alert("failed to dislike")
                 }
             }else{
-                alert("failed to dislike")
-            }
-        }else{
-            const res=await axios.post('/api/like/undislike',variable);
-            if(res.data.success===true){
-                setDislikeAction(false);
-                setDislikes(Dislikes-1);
-            }else{
-                alert("failed to decrease the dislike");
+                const res=await axios.post('/api/like/undislike',variable);
+                if(res.data.success===true){
+                    setDislikeAction(false);
+                    setDislikes(Dislikes-1);
+                }else{
+                    alert("failed to decrease the dislike");
+                }
             }
         }
     }

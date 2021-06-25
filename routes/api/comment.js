@@ -9,9 +9,9 @@ const router=express.Router();
 
 router.post('/saveComment',auth,(req,res)=>{
     const comment = new Comment(req.body)
-    
+    //console.log(comment);
     comment.save((err, comment) => {
-        console.log(err)
+        //console.log(err)
         if (err) return res.json({ success: false, err })
 
         Comment.find({ '_id': comment._id })
@@ -27,7 +27,6 @@ router.post('/getComments',(req,res)=>{
     //console.log(req.body);
     var variable={};
     if(req.body.movieId) variable={'postId':req.body.movieId}
-    else variable={'discuss':req.body.postId}
     Comment.find(variable)
     .populate('writer')
     .exec((err,comments)=>{

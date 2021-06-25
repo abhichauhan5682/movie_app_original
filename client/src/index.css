@@ -387,8 +387,65 @@ tr:nth-child(even) {
 }
 
 
+/*Abhay*/
+.post-body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.post-container{
+  width: 80vw !important;
+  height :100vh;
+  width: 75vw;
+  
+}
 
+.Posts{
+  color: darkcyan;
+}
+
+.top-bar-posts{
+  background-color: darkcyan;
+  border-radius: 4px;
+  color: white;
+  margin: 15px 0px;
+  font-size: 23px;
+  padding: 9px;
+}
+.submit-btn{
+  margin: 12px 0;
+}
+.posting{
+  border: 1px solid rgb(196, 196, 196);
+  border-radius: 4px;
+  margin: 0px;
+  padding: 10px;
+}
+.name{
+  font-size: 16px;
+  color: darkcyan;
+}
+.avatar-container{
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  font-size: 50px;
+}
+.like, .dislike{
+  background-color: rgb(165, 164, 164);
+  color: black;
+}
+.discussion-btn{
+  color: white;
+  background-color: darkcyan;
+}
+.like:hover, .dislike:hover{
+  color: darkcyan;
+}
+.discussion-btn:hover{
+  color: wheat;
+}
 /* Profiles Page */
 /* .profile {
   display: grid;

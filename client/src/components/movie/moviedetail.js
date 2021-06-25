@@ -85,7 +85,7 @@ const MovieDetail = (props) => {
             }
             <div style={{ width: '85%', margin: '1rem auto' }}>
                 <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                   {props.user!==null? 
+                   {props.user!==null&&props.auth.isAuth? 
                         <FavouriteButton
                             userFrom={props.user._id}
                             movieId={movieId}

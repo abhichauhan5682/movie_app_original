@@ -11,7 +11,7 @@ const { TextArea } = Input;
 const { Title } = Typography;
 
 const Comment = (props) => {
-    //console.log(props.commentLists);
+    //console.log("comments ke andar",props.commentLists);
     const [Comment, setComment] = useState("")
 
     const handleChange = (e) => {
@@ -30,12 +30,13 @@ const Comment = (props) => {
                 writer: props.auth.user._id,
                 postId: props.postId,
             }
-            //console.log(variables)
+            console.log(variables)
 
             axios.post('/api/comment/saveComment', variables)
                 .then(response => {
                     if (response.data.success) {
                         setComment("")
+                        console.log("response",response.data);
                         props.refreshFunction(response.data.result)
                     } else {
                         alert('Failed to save Comment')

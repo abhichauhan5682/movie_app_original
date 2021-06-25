@@ -19,6 +19,7 @@ import FavouritePage from './components/favouritepage/favouritepage';
 import PrivateRoute from './components/privaterouter/privateroute';
 import GenreId from './components/genreid';
 import Post from './components/post/post';
+import SinglePost from './components/post/singlepost';
 
 if(localStorage.token){
   setAuthToken(localStorage.token);
@@ -38,6 +39,7 @@ const App=()=>{
           <Route exact path='/movie/:movieId' component={MovieDetail}/>
           <Route exact path='/genre/:genreId' component={GenreId}/>
           <Route exact path='/posts' component={Post} />
+          <Route exact path='/posts/:postid' component={SinglePost}/>
           <PrivateRoute exact path='/favourite' component={FavouritePage}/>
         </Switch>
       </section>

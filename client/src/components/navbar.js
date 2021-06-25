@@ -8,7 +8,7 @@ import Helper from './Genre';
 const Navbar = (props) => {
     const auth=(
         <ul>
-            <li><Link to='/profiles'>Blogs</Link></li>
+            <li><Link to='/posts'>Blogs</Link></li>
             <li><Helper/></li>
             <li>
                 <Link to="/favourite">
@@ -28,7 +28,7 @@ const Navbar = (props) => {
 
     const guest=(
         <ul>
-            <li><Link to="/">Blogs</Link></li>
+            <li><Link to="/posts">Blogs</Link></li>
             <li><Helper/></li>
             <li><Link to="/register">Register</Link></li>
             <li><Link to="/login">Login</Link></li>
@@ -37,7 +37,7 @@ const Navbar = (props) => {
     return (
     <nav className="navbar bg-dark">
         <h1>
-            <Link to="/"><i className="fas fa-code"></i> DevConnector</Link>
+            <Link to="/"><i className="fas fa-code"></i>MovieApp</Link>
         </h1>
         {!props.auth.isLoading && (<Fragment>{props.auth.isAuth?auth:guest}</Fragment>)}
     </nav>

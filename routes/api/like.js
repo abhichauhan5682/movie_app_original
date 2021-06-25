@@ -10,8 +10,6 @@ router.post('/getlikes',(req,res)=>{
         variable = { movieId: req.body.movieId, userId: req.body.userId }
     } else if(req.body.commentId) {
         variable = { commentId: req.body.commentId , userId: req.body.userId }
-    }else{
-        variable={postId:req.body.postId,userId:req.body.userId}
     }
     Like.find(variable)
     .exec((err,likes)=>{
@@ -26,8 +24,6 @@ router.post('/getdislikes',(req,res)=>{
         variable = { movieId: req.body.movieId, userId: req.body.userId }
     } else if(req.body.commentId) {
         variable = { commentId: req.body.commentId , userId: req.body.userId }
-    }else{
-        variable={postId:req.body.postId,userId:req.body.userId}
     }
     Dislike.find(variable)
     .exec((err,dislikes)=>{
@@ -42,8 +38,6 @@ router.post('/uplike',auth,(req,res)=>{
         variable = { movieId: req.body.movieId, userId: req.body.userId }
     } else if(req.body.commentId) {
         variable = { commentId: req.body.commentId , userId: req.body.userId }
-    }else{
-        variable={postId:req.body.postId,userId:req.body.userId}
     }
     const like=new Like(variable);
     like.save((err,result)=>{
@@ -64,8 +58,6 @@ router.post("/unlike",auth, (req, res) => {
         variable = { movieId: req.body.movieId, userId: req.body.userId }
     } else if(req.body.commentId) {
         variable = { commentId: req.body.commentId , userId: req.body.userId }
-    }else{
-        variable={postId:req.body.postId,userId:req.body.userId}
     }
     Like.findOneAndDelete(variable)
         .exec((err, result) => {
@@ -83,8 +75,6 @@ router.post("/undislike",auth, (req, res) => {
         variable = { movieId: req.body.movieId, userId: req.body.userId }
     } else if(req.body.commentId) {
         variable = { commentId: req.body.commentId , userId: req.body.userId }
-    }else{
-        variable={postId:req.body.postId,userId:req.body.userId}
     }
     Dislike.findOneAndDelete(variable)
         .exec((err, result) => {
@@ -100,8 +90,6 @@ router.post('/updislike',auth,(req,res)=>{
         variable = { movieId: req.body.movieId, userId: req.body.userId }
     } else if(req.body.commentId) {
         variable = { commentId: req.body.commentId , userId: req.body.userId }
-    }else{
-        variable={postId:req.body.postId,userId:req.body.userId}
     }
     const dislike=new Dislike(variable);
     dislike.save((err,result)=>{

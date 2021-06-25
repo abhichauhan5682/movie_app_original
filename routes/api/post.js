@@ -6,6 +6,7 @@ const auth=require('../../middleware/auth');
 const User=require('../../models/user');
 
 const router=express.Router();
+
 router.post('/setpost',[auth,[
     check('text','text is requires').not().isEmpty(),
 ]],async (req,res)=> {
@@ -39,14 +40,14 @@ router.get('/getposts',async (req,res)=>{
     }
 });
 
-router.get('/:id',auth,async (req,res)=>{
+router.get('/:id',async (req,res)=>{
     try {
         const post =await Post.findById(req.params.id);
         if(!post) return res.status(404).json({msg:'not found'});
-        res.json(post);
+        res.status(200).json({success:true,post});
     } catch (error) {
         console.log(error);
-        res.status(500).json({msg:"SERVER ERROR"}); 
+        res.status(500).json({success:false,msg:"SERVER ERROR"}); 
     }
 });
 
@@ -63,16 +64,6 @@ router.delete('/:id',auth,async (req,res)=>{
         res.status(500).json({msg:"SERVER ERROR"}); 
     }
 });
-
-
-
-
-
-
-
-
-
-
 
 
 module.exports=router;
